@@ -47,9 +47,9 @@ exports.findAll = (req, res) => {
     });
 };
 // Find a single section with an id
-exports.findAllForUser = (req, res) => {
-  const userId = req.params.userId;
-  Section.findAll({ where: { userId : userId }})
+exports.findAllForId = (req, res) => {
+  const id = req.params.id;
+  Section.findAll({ where: { id : id }})
     .then(data => {
       if (data) {
         res.send(data);
