@@ -46,22 +46,22 @@ exports.findAll = (req, res) => {
       });
     });
 };
-// Find a single section with an id
-exports.findAllForId = (req, res) => {
-  const id = req.params.id;
-  Section.findAll({ where: { id : id }})
+// Find all sections with a course id
+exports.findAllForCourseId = (req, res) => {
+  const courseId = req.params.courseId;
+  Section.findAll({ where: { courseId : courseId }})
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find section with id=${id}.`
+          message: `Cannot find section with course id=${courseId}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving section with id=" + id
+        message: "Error retrieving section with course id=" + courseId
       });
     });
 };
