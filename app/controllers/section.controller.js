@@ -47,7 +47,7 @@ exports.findAll = (req, res) => {
     });
 };
 // Find all sections with a course id
-exports.findAllForCourseId = (req, res) => {
+exports.findAllForCourse = (req, res) => {
   const courseId = req.params.courseId;
   Section.findAll({ where: { courseId : courseId }})
     .then(data => {
@@ -67,7 +67,7 @@ exports.findAllForCourseId = (req, res) => {
 };
 // Find a single section with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.sectionId;
   Section.findByPk(id)
     .then(data => {
       if (data) {
@@ -86,9 +86,9 @@ exports.findOne = (req, res) => {
 };
 // Update a section by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.sectionId;
   Section.update(req.body, {
-    where: { id: id }
+    where: { sectionId: id }
   })
     .then(num => {
       if (num == 1) {
@@ -109,9 +109,9 @@ exports.update = (req, res) => {
 };
 // Delete a section with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.sectionId;
   Section.destroy({
-    where: { id: id }
+    where: { sectionId: id }
   })
     .then(num => {
       if (num == 1) {
@@ -143,19 +143,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all Sections."
-      });
-    });
-};
-// Find all published Sections
-exports.findAllPublished = (req, res) => {
-  Section.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Sections."
       });
     });
 };
