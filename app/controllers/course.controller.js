@@ -1,9 +1,17 @@
-const db = require("../models");
+
+ const db = require("../models");
 const Course = db.course;
 const Op = db.Sequelize.Op;
 // Create and Save a new course
 exports.create = (req, res) => {
   // Validate request
+  if (!req.body.courseId) {
+    res.status(400).send({
+      message: "Course Id can not be empty!"
+    });
+    return;
+  }
+
   if (!req.body.courseNumber) {
     res.status(400).send({
       message: "Course Number can not be empty!"
@@ -14,6 +22,48 @@ exports.create = (req, res) => {
   if (!req.body.courseName) {
     res.status(400).send({
       message: "Course Name can not be empty!"
+    });
+    return;
+  }
+
+  if (!req.body.courseHour) {
+    res.status(400).send({
+      message: "Course Number can not be empty!"
+    });
+    return;
+  }
+
+  if (!req.body.courseLevel) {
+    res.status(400).send({
+      message: "Course Level can not be empty!"
+    });
+    return;
+  }
+
+  if (!req.body.courseRestrict) {
+    res.status(400).send({
+      message: "Course Restrict can not be empty!"
+    });
+    return;
+  }
+
+  if (!req.body.courseYearly) {
+    res.status(400).send({
+      message: "Course Yearly can not be empty!"
+    });
+    return;
+  }
+
+  if (!req.body.courseSession) {
+    res.status(400).send({
+      message: "Course Session can not be empty!"
+    });
+    return;
+  }
+
+  if (!req.body.courseDescription) {
+    res.status(400).send({
+      message: "Course Description can not be empty!"
     });
     return;
   }
@@ -43,7 +93,7 @@ exports.create = (req, res) => {
     });
 };
 // Retrieve all courses from the database.
-exports.findAll = (req, res) => {
+exports.findAllForCourse = (req, res) => {
   const courseId = req.query.courseId;
   var condition = courseId ? {
     courseId: {
@@ -62,21 +112,6 @@ exports.findAll = (req, res) => {
       });
     });
 };
-// Retrieve all courses for a tutorial from the database.
-//exports.findAllForTutorial = (req, res) => {
-  //const tutorialId = req.params.tutorialId;
-
-  //Course.findAll({ where: { tutorialId : tutorialId } })
-  //.then(data => {
-//     res.send(data);
-//   })
-//   .catch(err => {
-//     res.status(500).send({
-//       message:
-//         err.message || "Some error occurred while retrieving courses."
-//     });
-//   });
-// };
 
 // Find a single course with an id
 exports.findOne = (req, res) => {
@@ -156,6 +191,22 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all courses."
+      });
+    });
+};
+
+// Find all published Lessons
+exports.findAllPublished = (req, res) => {
+  const courseId = req.query.courseId;
+
+  Course.findAll({ where: { published: true } })
+    .then(data => {
+      res.send(data);
+    }) 
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving lessons."
       });
     });
 };

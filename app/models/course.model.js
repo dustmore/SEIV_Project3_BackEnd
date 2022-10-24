@@ -1,21 +1,31 @@
+
 module.exports = (sequelize, Sequelize) => {
     const Course = sequelize.define("course", {
-      Dept: {
+      courseId: {
         type: Sequelize.STRING
       },
       CourseNumber: {
         type: Sequelize.STRING
       },
-      Level: {
+      courseName: {
         type: Sequelize.STRING
       },
-      Hours: {
+      courseHours: {
         type: Sequelize.STRING
       },
-      Name: {
+      courseLevel: {
         type: Sequelize.STRING
       },
-      Description: {
+      courseRestrict: {
+        type: Sequelize.STRING
+      },
+      courseYearly: {
+        type: Sequelize.STRING
+      },
+      courseYearly: {
+        type: Sequelize.STRING
+      },
+      courseDescription: {
         type: Sequelize.STRING
       }
     });
