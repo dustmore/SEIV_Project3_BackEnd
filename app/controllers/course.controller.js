@@ -62,21 +62,26 @@ exports.findAll = (req, res) => {
       });
     });
 };
-// Retrieve all courses for a tutorial from the database.
-//exports.findAllForTutorial = (req, res) => {
-  //const tutorialId = req.params.tutorialId;
 
-  //Course.findAll({ where: { tutorialId : tutorialId } })
-  //.then(data => {
-//     res.send(data);
-//   })
-//   .catch(err => {
-//     res.status(500).send({
-//       message:
-//         err.message || "Some error occurred while retrieving courses."
-//     });
-//   });
-// };
+// Find a single course with an id for a user
+//exports.findAllForUser = (req, res) => {
+  //const userId = req.params.userId;
+  //Course.findAll({ where: { userId : userId }})
+    //.then(data => {
+      //if (data) {
+        //res.send(data);
+      //} else {
+        //res.status(404).send({
+          //message: `Cannot find Course with id=${courseId}.`
+        //});
+      //}
+    //})
+    //.catch(err => {
+      //res.status(500).send({
+        //message: "Error retrieving Course with id=" + courseId
+      //});
+    //});
+//};
 
 // Find a single course with an id
 exports.findOne = (req, res) => {
@@ -101,7 +106,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.courseId;
   Course.update(req.body, {
-    where: { id: id }
+    where: { courseId: id }
   })
     .then(num => {
       if (num == 1) {
@@ -124,7 +129,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.courseId;
   Course.destroy({
-    where: { id: id }
+    where: { courseId: id }
   })
     .then(num => {
       if (num == 1) {
