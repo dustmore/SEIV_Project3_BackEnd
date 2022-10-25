@@ -1,3 +1,4 @@
+
 module.exports = app => {
     const sections = require("../controllers/section.controller.js");
     const { authenticate } = require("../authorization/authorization.js");

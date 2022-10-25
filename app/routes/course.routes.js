@@ -1,3 +1,4 @@
+
 module.exports = app => {
   const courses = require("../controllers/course.controller.js");
   const { authenticate } = require("../authorization/authorization.js");

@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, Sequelize) => {
     const Section = sequelize.define("section", {
       sectionId: {
@@ -25,4 +26,3 @@ module.exports = (sequelize, Sequelize) => {
   
     return Section;
 };
-

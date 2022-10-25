@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, Sequelize) => {
     const Course = sequelize.define("course", {
       courseId: {
