@@ -19,9 +19,9 @@
 
 module.exports = {
   HOST: "localhost",
-  port: 3004,
+  port: 3014,
   USER: "root",
-  PASSWORD: "", //Personal Password
+  PASSWORD: "admin", //Personal Password
   DB: "catalog",
   dialect: "mysql",
   pool: {
