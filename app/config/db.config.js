@@ -22,7 +22,7 @@ module.exports = {
   port: 3004,
   USER: "root",
   PASSWORD: "", //Personal Password
-  DB: "course",
+  DB: "catalog",
   dialect: "mysql",
   pool: {
     max: 5,

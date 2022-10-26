@@ -1,12 +1,12 @@
 {
   "name": "seiv-p3-node",
   "version": "1.0.0",
-  "description": "Tutorial Node.js with Rest API",
+  "description": "Node.js with Rest API",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json schedule-t4-backend.service .env deploy"
+    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json schedule-t4-backend.service && rm deploy/app/config/db.config.js && mv deploy/app/config/prod.db.config.js deploy/app/config/db.config.js"
   },
   "keywords": [
     "node.js",
@@ -18,11 +18,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "googleapis": "^100.0.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.0",
-    "parser": "^0.1.4"
+    "parser": "^0.1.4",
+    "sequelize": "^6.19.0"
   }
 }
