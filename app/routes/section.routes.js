@@ -20,7 +20,7 @@ module.exports = app => {
     router.delete("/:courseId/sections/:id", [authenticate], sections.delete);
 
     // Delete all sections
-    router.delete("/:courseId/sections/:id", [authenticate], sections.deleteAll);
+    router.delete("/:courseId/sections/", [authenticate], sections.deleteAll);
 
     app.use('/schedule-t4/courses', router);
 };

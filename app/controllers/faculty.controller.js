@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 
   // Create a faculty
   const faculty = {
-    facultyId: req.body.facultyId,
+    id: req.body.id,
     facultyFName: req.body.facultyFName,
     facultyLName: req.body.facultyLName,
   };
@@ -35,8 +35,8 @@ exports.create = (req, res) => {
 
 // Retrieve all faculties from the database.
 exports.findAll = (req, res) => {
-  const facultyId = req.query.facultyId;
-  var condition = facultyId ? { facultyId: { [Op.like]: `%${facultyId}%` } } : null;
+  const id = req.query.id;
+  var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
   Faculty.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 
 // Find a single faculty with an id
 exports.findOne = (req, res) => {
-  const id = req.params.facultyId;
+  const id = req.params.id;
   Faculty.findByPk(id)
     .then(data => {
       if (data) {
@@ -71,9 +71,9 @@ exports.findOne = (req, res) => {
 
 // Update a faculty by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.facultyId;
+  const id = req.params.id;
   Faculty.update(req.body, {
-    where: { facultyId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -95,9 +95,9 @@ exports.update = (req, res) => {
 
 // Delete a faculty with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.facultyId;
+  const id = req.params.id;
   Faculty.destroy({
-    where: { facultyId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {

@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 
   // Create a semester
   const semester = {
-    semesterId: req.body.semesterId,
+    id: req.body.id,
     sectionId: req.body.sectionId,
     semesterStartDate: req.body.semesterStartDate,
     semesterEndDate: req.body.semesterEndDate
@@ -36,8 +36,8 @@ exports.create = (req, res) => {
 
 // Retrieve all sections from the database.
 exports.findAll = (req, res) => {
-  const semesterId = req.query.semesterId;
-  var condition = semesterId ? { semesterId: { [Op.like]: `%${semesterId}%` } } : null;
+  const id = req.query.id;
+  var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
   Semester.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -52,7 +52,7 @@ exports.findAll = (req, res) => {
 
 // Find a single semester with an id
 exports.findOne = (req, res) => {
-  const id = req.params.semesterId;
+  const id = req.params.id;
   Semester.findByPk(id)
     .then(data => {
       if (data) {
@@ -72,9 +72,9 @@ exports.findOne = (req, res) => {
 
 // Update a semester by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.semesterId;
+  const id = req.params.id;
   Semester.update(req.body, {
-    where: { semesterId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -96,9 +96,9 @@ exports.update = (req, res) => {
 
 // Delete a semester with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.semesterId;
+  const id = req.params.id;
   Semester.destroy({
-    where: { semesterId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {

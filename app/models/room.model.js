@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, Sequelize) => {
     const Room = sequelize.define("room", {
-      roomId: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true
       },

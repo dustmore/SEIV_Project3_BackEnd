@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 
   // Create a room
   const room = {
-    roomId: req.body.roomId,
+    id: req.body.id,
     roomNumber: req.body.roomNumber,
     sectionId: req.body.sectionId
   };
@@ -35,8 +35,8 @@ exports.create = (req, res) => {
 
 // Retrieve all rooms from the database.
 exports.findAll = (req, res) => {
-  const roomId = req.query.roomId;
-  var condition = roomId ? { roomId: { [Op.like]: `%${roomId}%` } } : null;
+  const id = req.query.id;
+  var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
   Room.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 
 // Find a single room with an id
 exports.findOne = (req, res) => {
-  const id = req.params.roomId;
+  const id = req.params.id;
   Room.findByPk(id)
     .then(data => {
       if (data) {
@@ -71,9 +71,9 @@ exports.findOne = (req, res) => {
 
 // Update a rooom by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.roomId;
+  const id = req.params.id;
   Room.update(req.body, {
-    where: { roomId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -95,9 +95,9 @@ exports.update = (req, res) => {
 
 // Delete a room with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.roomId;
+  const id = req.params.id;
   Room.destroy({
-    where: { roomId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {

@@ -5,25 +5,25 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new semester
-    router.post("/", [authenticate], semester.create);
+    router.post("/:courseId/semesters/", [authenticate], semester.create);
   
     // Retrieve all semesters
-    router.get("/", [authenticate], semester.findAll);
+    router.get("/:courseId/semesters/", [authenticate], semester.findAll);
   
    // Retrieve all semesters for user
    // router.get("/userCour/:userId", [authenticate], semester.findAllForUser);
   
     // Retrieve a single semster with id
-    router.get("/:id", [authenticate], semester.findOne);
+    router.get("/:courseId/semesters/:id", [authenticate], semester.findOne);
   
     // Update a semester with id
-    router.put("/:id", [authenticate], semester.update);
+    router.put("/:courseId/semesters/:id", [authenticate], semester.update);
   
     // Delete a semester with id
-    router.delete("/:id", [authenticate], semester.delete);
+    router.delete("/:courseId/semesters/:id", [authenticate], semester.delete);
   
     // Delete all semesters
-    router.delete("/", [authenticate], semester.deleteAll);
+    router.delete("/:courseId/semesters/", [authenticate], semester.deleteAll);
   
-    app.use('/schedule-t4/semester', router);
+    app.use('/schedule-t4/courses', router);
   };
