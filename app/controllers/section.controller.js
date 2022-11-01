@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   }
   // Create a section
   const section = {
-    sectionId: req.body.sectionId,
+    id: req.body.id,
     courseId: req.body.courseId,
     sectionStartDate: req.body.sectionStartDate,
     sectionEndDate: req.body.sectionEndDate,
@@ -33,8 +33,8 @@ exports.create = (req, res) => {
 };
 // Retrieve all sections from the database.
 exports.findAll = (req, res) => {
-  const sectionId = req.query.sectionId;
-  var condition = sectionId ? { sectionId: { [Op.like]: `%${sectionId}%` } } : null;
+  const id = req.query.id;
+  var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
   Section.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -67,7 +67,7 @@ exports.findAllForCourse = (req, res) => {
 };
 // Find a single section with an id
 exports.findOne = (req, res) => {
-  const id = req.params.sectionId;
+  const id = req.params.id;
   Section.findByPk(id)
     .then(data => {
       if (data) {
@@ -86,9 +86,9 @@ exports.findOne = (req, res) => {
 };
 // Update a section by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.sectionId;
+  const id = req.params.id;
   Section.update(req.body, {
-    where: { sectionId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -109,9 +109,9 @@ exports.update = (req, res) => {
 };
 // Delete a section with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.sectionId;
+  const id = req.params.id;
   Section.destroy({
-    where: { sectionId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {

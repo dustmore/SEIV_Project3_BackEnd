@@ -20,7 +20,7 @@ exports.create = (req, res) => {
 
   // Create a course
   const course = {
-    courseId: req.params.courseId,
+    id: req.params.id,
     courseNumber: req.body.courseNumber,
     courseName: req.body.courseName,
     courseHour: req.body.courseHour,
@@ -44,10 +44,10 @@ exports.create = (req, res) => {
 };
 // Retrieve all courses from the database.
 exports.findAll = (req, res) => {
-  const courseId = req.query.courseId;
-  var condition = courseId ? {
-    courseId: {
-      [Op.like]: `%${courseId}%`
+  const id = req.query.id;
+  var condition = id ? {
+    id: {
+      [Op.like]: `%${id}%`
     }
   } : null;
 
@@ -72,20 +72,20 @@ exports.findAll = (req, res) => {
         //res.send(data);
       //} else {
         //res.status(404).send({
-          //message: `Cannot find Course with id=${courseId}.`
+          //message: `Cannot find Course with id=${id}.`
         //});
       //}
     //})
     //.catch(err => {
       //res.status(500).send({
-        //message: "Error retrieving Course with id=" + courseId
+        //message: "Error retrieving Course with id=" + id
       //});
     //});
 //};
 
 // Find a single course with an id
 exports.findOne = (req, res) => {
-  const id = req.params.courseId;
+  const id = req.params.id;
   Course.findByPk(id)
     .then(data => {
       if (data) {
@@ -104,9 +104,9 @@ exports.findOne = (req, res) => {
 };
 // Update a course by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.courseId;
+  const id = req.params.id;
   Course.update(req.body, {
-    where: { courseId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -127,9 +127,9 @@ exports.update = (req, res) => {
 };
 // Delete a course with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.courseId;
+  const id = req.params.id;
   Course.destroy({
-    where: { courseId: id }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {

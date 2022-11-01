@@ -1,14 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
     const Section = sequelize.define("section", {
-      sectionId: {
+      id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      courseId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
+
       sectionStartDate: {
         type: Sequelize.STRING
       },
