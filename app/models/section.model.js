@@ -5,7 +5,6 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true
       },
-
       sectionStartDate: {
         type: Sequelize.STRING
       },
@@ -13,10 +12,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       sectionStartTime: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       sectionEndTime: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       }
     });
   

@@ -22,6 +22,7 @@ db.semester = require("./semester.model.js")(sequelize, Sequelize);
 db.faculty = require("./faculty.model.js")(sequelize, Sequelize);
 db.facultysection = require("./facultysection.model.js")(sequelize, Sequelize);
 db.room = require("./room.model.js")(sequelize, Sequelize);
+db.office = require("./office.model.js")(sequelize, Sequelize);
 
 // foreign key for section
 db.course.hasMany(db.section, { as: 'section'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
@@ -46,6 +47,14 @@ db.facultysection.belongsTo(db.section, { as: 'section'}, { foreignKey: { allowN
 // foreign key for room
 db.section.hasMany(db.room, { as: 'room'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 db.room.belongsTo(db.section, { as: 'section'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+
+// foreign key for office
+db.user.hasMany(db.office, { as: 'office'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+db.office.belongsTo(db.user, { as: 'user'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+
+// foreign key for office
+db.semester.hasMany(db.office, { as: 'office'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+db.office.belongsTo(db.semester, { as: 'semester'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
 // foreign key for tutorials
 //db.user.hasMany(db.tutorial, { as: 'tutorial'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
