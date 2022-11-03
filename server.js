@@ -1,4 +1,4 @@
-/*
+
 require('dotenv').config();
 
 const express = require("express");
@@ -31,14 +31,20 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/course.routes")(app);
+require("./app/routes/faculty.routes")(app);
+require("./app/routes/facultysection.routes")(app);
+require("./app/routes/office.routes")(app);
 require("./app/routes/section.routes")(app);
+require("./app/routes/semester.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3014;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-*/
+
+/*
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -75,5 +81,5 @@ const PORT = process.env.PORT || 3014;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
+*/
 
