@@ -13,13 +13,13 @@ module.exports = app => {
    router.get("/:userId/office/", [authenticate], office.findAllForUser);
   
     // Retrieve a single office with id
-    router.get("/:userId//office/:id", [authenticate], office.findOne);
+    router.get("/:userId/office/:id", [authenticate], office.findOne);
   
     // Update a office with id
-    router.put("/:userId//office/:id", [authenticate], office.update);
+    router.put("/:userId/office/:id", [authenticate], office.update);
   
     // Delete a office with id
-    router.delete("/:userId//office/:id", [authenticate], office.delete);
+    router.delete("/:userId/office/:id", [authenticate], office.delete);
   
     // Delete all offices
     router.delete("/:userId/office/", [authenticate], office.deleteAll);
