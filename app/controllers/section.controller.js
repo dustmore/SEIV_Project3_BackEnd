@@ -14,6 +14,7 @@ exports.create = (req, res) => {
   const section = {
     id: req.body.id,
     courseId: req.body.courseId,
+    sectionWeekDay: req.body.sectionWeekDay,
     sectionStartDate: req.body.sectionStartDate,
     sectionEndDate: req.body.sectionEndDate,
     sectionStartTime: req.body.sectionStartTime,

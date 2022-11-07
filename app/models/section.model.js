@@ -5,6 +5,9 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true
       },
+      sectionWeekDay: {
+        type: Sequelize.STRING
+      },
       sectionStartDate: {
         type: Sequelize.STRING
       },
