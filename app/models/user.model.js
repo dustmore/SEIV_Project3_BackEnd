@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
       id: {
@@ -14,6 +15,10 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       },
       email: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      role: {
         type: Sequelize.STRING,
         allowNull: false
       },
