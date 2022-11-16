@@ -4,25 +4,25 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new office
-    router.post("/:userId/office/", [authenticate], office.create);
+    router.post("/", [authenticate], office.create);
   
     // Retrieve all office
-    router.get("/:userId/office/", [authenticate], office.findAll);
+    router.get("/", [authenticate], office.findAll);
   
     // Retrieve all offices for user
-   router.get("/:userId/office/", [authenticate], office.findAllForUser);
+   router.get("/", [authenticate], office.findAllForUser);
   
     // Retrieve a single office with id
-    router.get("/:userId/office/:id", [authenticate], office.findOne);
+    router.get("/:id", [authenticate], office.findOne);
   
     // Update a office with id
-    router.put("/:userId/office/:id", [authenticate], office.update);
+    router.put("/:id", [authenticate], office.update);
   
     // Delete a office with id
-    router.delete("/:userId/office/:id", [authenticate], office.delete);
+    router.delete("/:id", [authenticate], office.delete);
   
     // Delete all offices
-    router.delete("/:userId/office/", [authenticate], office.deleteAll);
+    router.delete("/", [authenticate], office.deleteAll);
   
-    app.use('/schedule-t4/user', router);
+    app.use('/schedule-t4/office', router);
   };

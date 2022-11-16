@@ -14,6 +14,7 @@ exports.create = (req, res) => {
   const section = {
     id: req.body.id,
     courseId: req.body.courseId,
+    sectionWeekDay: req.body.sectionWeekDay,
     sectionStartDate: req.body.sectionStartDate,
     sectionEndDate: req.body.sectionEndDate,
     sectionStartTime: req.body.sectionStartTime,
@@ -34,8 +35,9 @@ exports.create = (req, res) => {
 // Retrieve all sections from the database.
 exports.findAll = (req, res) => {
   const id = req.query.id;
-  var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  Section.findAll({ where: condition })
+  // var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
+  // Section.findAll({ where: condition })
+  Section.findAll()
     .then(data => {
       res.send(data);
     })
