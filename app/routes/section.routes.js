@@ -26,7 +26,6 @@
 
 module.exports = app => {
     const sections = require("../controllers/section.controller.js");
-    //const { authenticate } = require("../authorization/authorization.js");
     var router = require("express").Router();
 
     // Create a new section for a course
