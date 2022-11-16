@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new section
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.courseId) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,6 +14,7 @@ exports.create = (req, res) => {
   const section = {
     id: req.body.id,
     courseId: req.body.courseId,
+    sectionWeekDay: req.body.sectionWeekDay,
     sectionStartDate: req.body.sectionStartDate,
     sectionEndDate: req.body.sectionEndDate,
     sectionStartTime: req.body.sectionStartTime,
