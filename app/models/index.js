@@ -56,9 +56,4 @@ db.office.belongsTo(db.user, { as: 'user'}, { foreignKey: { allowNull: false }, 
 db.semester.hasMany(db.office, { as: 'office'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 db.office.belongsTo(db.semester, { as: 'semester'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-// foreign key for tutorials
-//db.user.hasMany(db.tutorial, { as: 'tutorial'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-//db.tutorial.belongsTo(db.user, { as: 'user'}, { foreignKey: { allowNull: false }, onDelete: 'CASCADE', });
-
-
 module.exports = db;
